@@ -26,7 +26,7 @@ public class ExprFormatDateOfPlayer extends SimpleExpression<String> {
 	static {
 		Skript.registerExpression(
 				ExprFormatDateOfPlayer.class, String.class, ExpressionType.SIMPLE, 
-				"[the] formatted date (of|for) player %player%");
+				"[the] formatted date (of|for) [player] %player%");
 	}
 	
 	private Expression<Player> player;
