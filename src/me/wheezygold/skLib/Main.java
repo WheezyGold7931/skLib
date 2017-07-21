@@ -44,6 +44,12 @@ public class Main extends JavaPlugin implements Listener {
                 return Bukkit.getServer().getPluginManager().getPlugin("Skript").getDescription().getVersion();
             }
         });
+		metrics.addCustomChart(new Metrics.SimplePie("plugin_version") {
+            @Override
+            public String getValue() {
+                return getInstance().getDescription().getVersion();
+            }
+        });
 		Util.sendCMsg("Loaded Metrics!");
 		if (getServer().getPluginManager().getPlugin("Skript")!=null) {
 			Util.sendCMsg("Skript has been found!");
