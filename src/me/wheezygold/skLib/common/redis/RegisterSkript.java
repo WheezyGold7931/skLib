@@ -34,7 +34,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class RegisterSkript {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public RegisterSkript(JavaPlugin pl) {
-        Skript.registerAddon((JavaPlugin)pl);
         Skript.registerEffect(EffectMessage.class, (String[])new String[]{"send redis message %string% over channel %string%"});
         Skript.registerEffect(EffectDoEvent.class, (String[])new String[]{"do local redis event with message %string% over channel %string%"});
         Skript.registerEffect(EffectFlush.class, (String[])new String[]{"flush all redis variables"});
