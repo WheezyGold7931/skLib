@@ -1,0 +1,11 @@
+main: me.wheezygold.skLib.Main
+name: skLib
+version: 1.0.0
+website: https://github.com/WheezyGold7931/skLib/
+author: WheezyGold7931
+description: Giving Skript developers some fancy features that could be useful.
+softdepend: [Skript]
+commands:
+  skLib:
+    description: Main command for skLib
+    usage: /skLib

@@ -1,0 +1,13 @@
+redis-ip: 127.0.0.1
+redis-port: 6379
+redis-password: passwordhere
+
+#Channels allow you to easily separate messages for different purposes.
+#This server will only listen for the channels you specify, however messages can be sent over any channel.
+#Note that channels are CaSe SeNsItIvE.
+#Variables can be accessed globally regardless of channels.
+
+channels:
+    - channel1
+    - channel2
+    - channel3
