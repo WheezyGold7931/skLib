@@ -97,8 +97,12 @@ public class Main extends JavaPlugin implements Listener {
 	 @Override
 	    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 	        if (command.getName().equalsIgnoreCase("skLib")) {
-	        	final Player p = (Player) sender;
-	        	Util.sendMsg(p, "Reloaded the config!");
+			if (sender instanceof Player) {
+				final Player p = (Player) sender;
+		        	Util.sendMsg(p, "Reloaded the config!");
+			} else {
+				Util.sendCMsg("Reloaded the config!");
+			}
 		        reloadConfig();
 		        return true;
 	        }
