@@ -93,14 +93,54 @@ public class Main extends JavaPlugin implements Listener {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				if (Bukkit.getBukkitVersion().contains("1.8")) {
-					Util.sendCMsg("Looks like you are running MC 1.8...Loading the 1.8 Skript syntax...");
+				if (Bukkit.getVersion().contains("(MC: 1.8.4)") || Bukkit.getVersion().contains("(MC: 1.8.5)") || Bukkit.getVersion().contains("(MC: 1.8.6)") || Bukkit.getVersion().contains("(MC: 1.8.7)") || Bukkit.getVersion().contains("(MC: 1.8.8)")) {
+					Util.sendCMsg("Sliding into the 1.8.4 - 1.8.8's dms...");
 					try {
 						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
+				if (Bukkit.getVersion().contains("(MC: 1.9)") || Bukkit.getVersion().contains("(MC: 1.9.1)") || Bukkit.getVersion().contains("(MC: 1.9.2)") || Bukkit.getVersion().contains("(MC: 1.9.3)")) {
+					Util.sendCMsg("Sliding into the 1.9 - 1.9.3's dms...");
+					try {
+						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				if (Bukkit.getVersion().contains("(MC: 1.9.4)")) {
+					Util.sendCMsg("Sliding into the 1.9.4's dms...");
+					try {
+						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				if (Bukkit.getVersion().contains("(MC: 1.10)") || Bukkit.getVersion().contains("(MC: 1.10.1)") || Bukkit.getVersion().contains("(MC: 1.10.2)")) {
+					 Util.sendCMsg("Sliding into the 1.10 - 1.10.2's dms...");
+						try {
+							sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				 }
+				 if (Bukkit.getVersion().contains("MC: 1.11")) {
+					 Util.sendCMsg("Sliding into the 1.11's dms...");
+					try {
+						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				 }
+				 if (Bukkit.getVersion().contains("MC: 1.12")) {
+					 Util.sendCMsg("Sliding into the 1.12's dms...");
+						try {
+							sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				 }
 				Util.sendCMsg("Loaded all of the Skript syntax!");
 			} else {
 				Util.sendCMsg("Skript is not looking to accept syntax/registrations. Did you restart the server?");
