@@ -28,7 +28,7 @@ public class EffRelightChunk extends Effect {
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return null;
+		return "relight [chunk] %chunk%";
 	}
 
 	@Override
