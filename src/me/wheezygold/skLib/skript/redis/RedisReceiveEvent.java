@@ -5,7 +5,7 @@
  *  org.bukkit.event.Event
  *  org.bukkit.event.HandlerList
  */
-package me.wheezygold.skLib.common.redis;
+package me.wheezygold.skLib.skript.redis;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

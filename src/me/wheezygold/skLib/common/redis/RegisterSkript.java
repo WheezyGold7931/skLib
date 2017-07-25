@@ -28,6 +28,7 @@ import me.wheezygold.skLib.skript.redis.ExprGetVariable;
 import me.wheezygold.skLib.skript.redis.ExprIP;
 import me.wheezygold.skLib.skript.redis.ExprMsg;
 import me.wheezygold.skLib.skript.redis.ExprPort;
+import me.wheezygold.skLib.skript.redis.RedisReceiveEvent;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,7 +45,7 @@ public class RegisterSkript {
         Skript.registerExpression(ExprPort.class, Integer.class, (ExpressionType)ExpressionType.SIMPLE, (String[])new String[]{"redis port"});
         Skript.registerExpression(ExprChannels.class, String.class, (ExpressionType)ExpressionType.SIMPLE, (String[])new String[]{"redis channels"});
         Skript.registerExpression(ExprGetVariable.class, String.class, (ExpressionType)ExpressionType.SIMPLE, (String[])new String[]{"redis variable %string%"});
-        Skript.registerEvent((String)"Redis Receive Event", SimpleEvent.class, RedisReceiveEvent.class, (String[])new String[]{"redis msg"});
+        Skript.registerEvent((String)"Redis Receive Event", SimpleEvent.class, RedisReceiveEvent.class, (String[])new String[]{"[on][ ]redis msg"});
         EventValues.registerEventValue(RedisReceiveEvent.class, String.class, (Getter)new Getter<String, RedisReceiveEvent>(){
 
             public String get(RedisReceiveEvent e) {
