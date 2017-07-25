@@ -104,7 +104,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.9)") || Bukkit.getVersion().contains("(MC: 1.9.1)") || Bukkit.getVersion().contains("(MC: 1.9.2)") || Bukkit.getVersion().contains("(MC: 1.9.3)")) {
 					Util.sendCMsg("Sliding into the 1.9 - 1.9.3's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+						sk.loadClasses("me.wheezygold.skLib.skript", "V1_9");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -112,7 +112,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.9.4)")) {
 					Util.sendCMsg("Sliding into the 1.9.4's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+						sk.loadClasses("me.wheezygold.skLib.skript", "V1_9_4");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -120,7 +120,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.10)") || Bukkit.getVersion().contains("(MC: 1.10.1)") || Bukkit.getVersion().contains("(MC: 1.10.2)")) {
 					 Util.sendCMsg("Sliding into the 1.10 - 1.10.2's dms...");
 						try {
-							sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+							sk.loadClasses("me.wheezygold.skLib.skript", "V1_10");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -128,7 +128,7 @@ public class Main extends JavaPlugin implements Listener {
 				 if (Bukkit.getVersion().contains("MC: 1.11")) {
 					 Util.sendCMsg("Sliding into the 1.11's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+						sk.loadClasses("me.wheezygold.skLib.skript", "V1_11");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -136,7 +136,7 @@ public class Main extends JavaPlugin implements Listener {
 				 if (Bukkit.getVersion().contains("MC: 1.12")) {
 					 Util.sendCMsg("Sliding into the 1.12's dms...");
 						try {
-							sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+							sk.loadClasses("me.wheezygold.skLib.skript", "V1_12");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
