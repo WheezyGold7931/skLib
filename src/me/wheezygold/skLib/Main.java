@@ -17,7 +17,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import me.wheezygold.metrics.Metrics;
-import me.wheezygold.skLib.WIP.EffCreateScrollSB;
 import me.wheezygold.skLib.common.RedisConfig;
 import me.wheezygold.skLib.common.Util;
 import me.wheezygold.skLib.common.redis.Subscriber;
@@ -78,6 +77,15 @@ public class Main extends JavaPlugin implements Listener {
                 return getInstance().getDescription().getVersion();
             }
         });
+		metrics.addCustomChart(new Metrics.SimplePie("redisk_syntax") {
+            @Override
+            public String getValue() {
+            	if (getServer().getPluginManager().getPlugin("RediSK")!=null) {
+            		return "false";
+            	}
+            	return "true";
+            }
+        });
 		Util.sendCMsg("Loaded Metrics!");
 		if (getServer().getPluginManager().getPlugin("Skript")!=null) {
 			Util.sendCMsg("Skript has been found!");
@@ -86,7 +94,6 @@ public class Main extends JavaPlugin implements Listener {
 			Util.sendCMsg("Registered Addon!");
 			if (Skript.isAcceptRegistrations()) {
 				Util.sendCMsg("Looks like Skript is looking for syntax so lets throw some shit at it...");
-				Skript.registerEffect(EffCreateScrollSB.class, "create a magic scoreboard with title %string% for %player%");
 				Util.sendCMsg("Going to start to load the syntax...");
 				try {
 					sk.loadClasses("me.wheezygold.skLib", "skript");
@@ -141,50 +148,50 @@ public class Main extends JavaPlugin implements Listener {
 							e.printStackTrace();
 						}
 				 }
+				 if (getServer().getPluginManager().getPlugin("RediSK")!=null) {
+						Util.sendCMsg("You already have RediSK installed so we are not going to load the RediSK syntax or stuff.");
+					} else {
+						Util.sendCMsg("You do not have RediSK so let's will load the syntax now!");
+						Util.sendCMsg("Loading the RediSK stuff now...");
+						ip = RedisConfig.getConfig().getString("redis-ip");
+				        port = RedisConfig.getConfig().getInt("redis-port");
+				        String password = RedisConfig.getConfig().getString("redis-password");
+				        List chnls = RedisConfig.getConfig().getList("channels");
+				        this.getLogger().info("Listening for channels:");
+				        channels = new String[chnls.size()];
+				        int counter = 0;
+				        Iterator iterator = chnls.iterator();
+				        while (iterator.hasNext()) {
+				            String s;
+				            Main.channels[counter] = s = (String)iterator.next();
+				            this.getLogger().info(String.valueOf(Integer.toString(++counter)) + ": " + s);
+				        }
+				        Util.sendCMsg("Starting the Jedis Pool...");
+				        pool = password == null || password.equals("") ? new JedisPool((GenericObjectPoolConfig)new JedisPoolConfig(), ip, port, 0) : new JedisPool(new JedisPoolConfig(), ip, port, 0, password);
+				        new BukkitRunnable(){
+
+				            public void run() {
+				                Main.subscriber = new Subscriber();
+				                Jedis jedis = Main.pool.getResource();
+				                try {
+				                	Main.connected = true;
+				                    jedis.subscribe(Main.subscriber, Main.channels);
+				                }
+				                catch (Exception e) {
+				                    Main.this.getLogger().severe("Can't connect to Redis! Are you sure it's running and your config is correct?");
+				                }
+				                jedis.close();
+				                Main.connected = false;
+				            }
+				        }.runTaskAsynchronously((Plugin)this);
+				        Util.sendCMsg("Loading the RediSK syntax...");
+				        new me.wheezygold.skLib.common.redis.RegisterSkript(this);
+				        Util.sendCMsg("Loaded the RediSK Syntax!");
+				        Util.sendCMsg("Finished loading the RediSK stuff, ily MFN <3.");
+					}
 				Util.sendCMsg("Loaded all of the Skript syntax!");
 			} else {
 				Util.sendCMsg("Skript is not looking to accept syntax/registrations. Did you restart the server?");
-			}
-			if (getServer().getPluginManager().getPlugin("RediSK")!=null) {
-				Util.sendCMsg("You already have RediSK installed so we are not going to load the RediSK syntax or stuff.");
-			} else {
-				Util.sendCMsg("You do not have RediSK so let's will load the syntax now!");
-				Util.sendCMsg("Loading the RediSK stuff now...");
-				ip = RedisConfig.getConfig().getString("redis-ip");
-		        port = RedisConfig.getConfig().getInt("redis-port");
-		        String password = RedisConfig.getConfig().getString("redis-password");
-		        List chnls = RedisConfig.getConfig().getList("channels");
-		        this.getLogger().info("Listening for channels:");
-		        channels = new String[chnls.size()];
-		        int counter = 0;
-		        Iterator iterator = chnls.iterator();
-		        while (iterator.hasNext()) {
-		            String s;
-		            Main.channels[counter] = s = (String)iterator.next();
-		            this.getLogger().info(String.valueOf(Integer.toString(++counter)) + ": " + s);
-		        }
-		        Util.sendCMsg("Starting the Jedis Pool...");
-		        pool = password == null || password.equals("") ? new JedisPool((GenericObjectPoolConfig)new JedisPoolConfig(), ip, port, 0) : new JedisPool(new JedisPoolConfig(), ip, port, 0, password);
-		        new BukkitRunnable(){
-
-		            public void run() {
-		                Main.subscriber = new Subscriber();
-		                Jedis jedis = Main.pool.getResource();
-		                try {
-		                	Main.connected = true;
-		                    jedis.subscribe(Main.subscriber, Main.channels);
-		                }
-		                catch (Exception e) {
-		                    Main.this.getLogger().severe("Can't connect to Redis! Are you sure it's running and your config is correct?");
-		                }
-		                jedis.close();
-		                Main.connected = false;
-		            }
-		        }.runTaskAsynchronously((Plugin)this);
-		        Util.sendCMsg("Loading the RediSK syntax...");
-		        new me.wheezygold.skLib.common.redis.RegisterSkript(this);
-		        Util.sendCMsg("Loaded the RediSK Syntax!");
-		        Util.sendCMsg("Finished loading the RediSK stuff, ily MFN <3.");
 			}
 		} else {
 			Util.sendCMsg("Skript has not been found, you idiot what do you think a skript addon is, so expect nothing to register.");
