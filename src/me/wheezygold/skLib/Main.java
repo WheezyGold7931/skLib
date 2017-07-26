@@ -1,8 +1,12 @@
 package me.wheezygold.skLib;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.bukkit.Bukkit;
@@ -13,6 +17,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.bobacadodl.imgmessage.ImageChar;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
