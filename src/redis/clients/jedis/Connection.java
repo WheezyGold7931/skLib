@@ -217,12 +217,12 @@ public class Connection implements Closeable {
     if (isConnected()) {
       try {
         outputStream.flush();
-        socket.close();
+        this.socket.close();
       } catch (IOException ex) {
         broken = true;
         throw new JedisConnectionException(ex);
       } finally {
-        IOUtils.closeQuietly(socket);
+        IOUtils.closeQuietly(this.socket);
       }
     }
   }
