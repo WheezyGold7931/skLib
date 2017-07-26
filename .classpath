@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="C:/Users/joshr/Documents/Eclipse/Libraries/10.jar"/>
 	<classpathentry kind="lib" path="C:/Users/joshr/Documents/Eclipse/Libraries/11.jar"/>
 	<classpathentry kind="lib" path="C:/Users/joshr/Documents/Eclipse/Libraries/12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/joshr/Documents/Eclipse/Libraries/ServerListPlus-3.4.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
