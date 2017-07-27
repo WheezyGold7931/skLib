@@ -18,13 +18,6 @@ local.properties
 # External tool builders
 .externalToolBuilders/
 
-# Dependency stuff created by blitz
-src_com\
-src_net\
-src_redis\
-src_org\
-src_me_nrubin29\
-
 # Locally stored "Eclipse launch configurations"
 *.launch
 
@@ -68,4 +61,9 @@ src_me_nrubin29\
 .classpath
 
 # End of https://www.gitignore.io/api/eclipse
-src/redis/clients/jedis/util/Hashing.java
+src/redis/
+src/net/
+src/org/
+src/com/
+src/me/nrubin29/
+build.xml
