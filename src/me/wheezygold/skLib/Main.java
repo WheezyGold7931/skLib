@@ -16,7 +16,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
-import me.wheezygold.metrics.Metrics;
 import me.wheezygold.skLib.common.RedisConfig;
 import me.wheezygold.skLib.common.Util;
 import me.wheezygold.skLib.common.redis.Subscriber;
