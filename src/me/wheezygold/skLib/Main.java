@@ -1,5 +1,4 @@
 package me.wheezygold.skLib;
-// o/ skLib
 
 import java.io.IOException;
 import java.util.Iterator;
