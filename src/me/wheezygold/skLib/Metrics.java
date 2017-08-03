@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package me.wheezygold.skLib;
 
 import org.bukkit.Bukkit;
@@ -1039,3 +1040,5 @@ public class Metrics {
     }
 
 }
+=======
+>>>>>>> 4f2fc659b76c9fc4b60b971c9de0c873e9a7594b
