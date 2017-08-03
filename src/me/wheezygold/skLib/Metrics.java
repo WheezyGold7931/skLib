@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package me.wheezygold.skLib;
 
 import org.bukkit.Bukkit;
@@ -167,7 +166,7 @@ public class Metrics {
      * @return The plugin specific data.
      */
     @SuppressWarnings("unchecked")
-	public JSONObject getPluginData() {
+    public JSONObject getPluginData() {
         JSONObject data = new JSONObject();
 
         String pluginName = plugin.getDescription().getName();
@@ -195,7 +194,7 @@ public class Metrics {
      * @return The server specific data.
      */
     @SuppressWarnings("unchecked")
-	private JSONObject getServerData() {
+    private JSONObject getServerData() {
         // Minecraft specific data
         int playerAmount = Bukkit.getOnlinePlayers().size();
         int onlineMode = Bukkit.getOnlineMode() ? 1 : 0;
@@ -230,7 +229,7 @@ public class Metrics {
      * Collects the data and sends it afterwards.
      */
     @SuppressWarnings("unchecked")
-	private void submitData() {
+    private void submitData() {
         final JSONObject data = getServerData();
 
         JSONArray pluginData = new JSONArray();
@@ -342,7 +341,7 @@ public class Metrics {
         }
 
         @SuppressWarnings("unchecked")
-		protected JSONObject getRequestJsonObject() {
+        protected JSONObject getRequestJsonObject() {
             JSONObject chart = new JSONObject();
             chart.put("chartId", chartId);
             try {
@@ -387,7 +386,7 @@ public class Metrics {
         public abstract String getValue();
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             String value = getValue();
@@ -424,7 +423,7 @@ public class Metrics {
         public abstract HashMap<String, Integer> getValues(HashMap<String, Integer> valueMap);
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -472,7 +471,7 @@ public class Metrics {
         public abstract int getValue();
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             int value = getValue();
@@ -510,7 +509,7 @@ public class Metrics {
         public abstract HashMap<String, Integer> getValues(HashMap<String, Integer> valueMap);
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -561,7 +560,7 @@ public class Metrics {
         public abstract HashMap<String, Integer> getValues(HashMap<String, Integer> valueMap);
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -605,7 +604,7 @@ public class Metrics {
         public abstract HashMap<String, int[]> getValues(HashMap<String, int[]> valueMap);
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -658,7 +657,7 @@ public class Metrics {
         public abstract Country getValue();
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             Country value = getValue();
@@ -697,7 +696,7 @@ public class Metrics {
         public abstract HashMap<Country, Integer> getValues(HashMap<Country, Integer> valueMap);
 
         @SuppressWarnings("unchecked")
-		@Override
+        @Override
         protected JSONObject getChartData() {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -749,7 +748,7 @@ public class Metrics {
         AUSTRIA("AT", "Austria"),
         AUSTRALIA("AU", "Australia"),
         ARUBA("AW", "Aruba"),
-        ALAND_ISLANDS("AX", "Åland Islands"),
+        ALAND_ISLANDS("AX", "ï¿½land Islands"),
         AZERBAIJAN("AZ", "Azerbaijan"),
         BOSNIA_AND_HERZEGOVINA("BA", "Bosnia and Herzegovina"),
         BARBADOS("BB", "Barbados"),
@@ -760,7 +759,7 @@ public class Metrics {
         BAHRAIN("BH", "Bahrain"),
         BURUNDI("BI", "Burundi"),
         BENIN("BJ", "Benin"),
-        SAINT_BARTHELEMY("BL", "Saint Barthélemy"),
+        SAINT_BARTHELEMY("BL", "Saint Barthï¿½lemy"),
         BERMUDA("BM", "Bermuda"),
         BRUNEI("BN", "Brunei"),
         BOLIVIA("BO", "Bolivia"),
@@ -778,7 +777,7 @@ public class Metrics {
         CENTRAL_AFRICAN_REPUBLIC("CF", "Central African Republic"),
         CONGO("CG", "Congo"),
         SWITZERLAND("CH", "Switzerland"),
-        COTE_D_IVOIRE("CI", "Côte d'Ivoire"),
+        COTE_D_IVOIRE("CI", "Cï¿½te d'Ivoire"),
         COOK_ISLANDS("CK", "Cook Islands"),
         CHILE("CL", "Chile"),
         CAMEROON("CM", "Cameroon"),
@@ -787,7 +786,7 @@ public class Metrics {
         COSTA_RICA("CR", "Costa Rica"),
         CUBA("CU", "Cuba"),
         CAPE_VERDE("CV", "Cape Verde"),
-        CURACAO("CW", "Curaçao"),
+        CURACAO("CW", "Curaï¿½ao"),
         CHRISTMAS_ISLAND("CX", "Christmas Island"),
         CYPRUS("CY", "Cyprus"),
         CZECH_REPUBLIC("CZ", "Czech Republic"),
@@ -1041,4 +1040,4 @@ public class Metrics {
 
 }
 =======
->>>>>>> 4f2fc659b76c9fc4b60b971c9de0c873e9a7594b
+        >>>>>>> 4f2fc659b76c9fc4b60b971c9de0c873e9a7594b

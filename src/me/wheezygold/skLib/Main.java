@@ -88,21 +88,21 @@ public class Main extends JavaPlugin implements Listener {
 		Util.sendCMsg("Loaded Metrics!");
 		if (getServer().getPluginManager().getPlugin("Skript")!=null) {
 			Util.sendCMsg("Skript has been found!");
-			Util.sendCMsg("Registing Addon...");
+			Util.sendCMsg("Registering Addon...");
 			SkriptAddon sk = Skript.registerAddon(this);
 			Util.sendCMsg("Registered Addon!");
 			if (Skript.isAcceptRegistrations()) {
 				Util.sendCMsg("Looks like Skript is looking for syntax so lets throw some shit at it...");
 				Util.sendCMsg("Going to start to load the syntax...");
 				try {
-					sk.loadClasses("me.wheezygold.skLib", "skript");
+					sk.loadClasses("me.wheezygold.skLib", "conditions", "effects", "events", "expressions");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				if (Bukkit.getVersion().contains("(MC: 1.8.4)") || Bukkit.getVersion().contains("(MC: 1.8.5)") || Bukkit.getVersion().contains("(MC: 1.8.6)") || Bukkit.getVersion().contains("(MC: 1.8.7)") || Bukkit.getVersion().contains("(MC: 1.8.8)")) {
 					Util.sendCMsg("Sliding into the 1.8.4 - 1.8.8's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib", "skriptV1_8");
+						sk.loadClasses("me.wheezygold.skLib.skript", "skriptV1_8");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -110,7 +110,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.9)") || Bukkit.getVersion().contains("(MC: 1.9.1)") || Bukkit.getVersion().contains("(MC: 1.9.2)") || Bukkit.getVersion().contains("(MC: 1.9.3)")) {
 					Util.sendCMsg("Sliding into the 1.9 - 1.9.3's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib", "skriptV1_9");
+						sk.loadClasses("me.wheezygold.skLib.skript", "skriptV1_9");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -118,7 +118,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.9.4)")) {
 					Util.sendCMsg("Sliding into the 1.9.4's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib", "skriptV1_9_4");
+						sk.loadClasses("me.wheezygold.skLib.skript", "skriptV1_9_4");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -126,7 +126,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.10)") || Bukkit.getVersion().contains("(MC: 1.10.1)") || Bukkit.getVersion().contains("(MC: 1.10.2)")) {
 					 Util.sendCMsg("Sliding into the 1.10 - 1.10.2's dms...");
 						try {
-							sk.loadClasses("me.wheezygold.skLib", "skriptV1_10");
+							sk.loadClasses("me.wheezygold.skLib.skript", "skriptV1_10");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -134,7 +134,7 @@ public class Main extends JavaPlugin implements Listener {
 				 if (Bukkit.getVersion().contains("MC: 1.11")) {
 					 Util.sendCMsg("Sliding into the 1.11's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib", "skriptV1_11");
+						sk.loadClasses("me.wheezygold.skLib.skript", "skriptV1_11");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -142,7 +142,7 @@ public class Main extends JavaPlugin implements Listener {
 				 if (Bukkit.getVersion().contains("MC: 1.12")) {
 					 Util.sendCMsg("Sliding into the 1.12's dms...");
 						try {
-							sk.loadClasses("me.wheezygold.skLib", "skriptV1_12");
+							sk.loadClasses("me.wheezygold.skLib.skript", "skriptV1_12");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -160,7 +160,7 @@ public class Main extends JavaPlugin implements Listener {
 				 if (getServer().getPluginManager().getPlugin("RediSK")!=null) {
 						Util.sendCMsg("You already have RediSK installed so we are not going to load the RediSK syntax or stuff.");
 					} else {
-						Util.sendCMsg("You do not have RediSK so let's will load the syntax now!");
+						Util.sendCMsg("You do not have RediSK so let's load the syntax now!");
 						Util.sendCMsg("Loading the RediSK stuff now...");
 						ip = RedisConfig.getConfig().getString("redis-ip");
 				        port = RedisConfig.getConfig().getInt("redis-port");
@@ -195,7 +195,7 @@ public class Main extends JavaPlugin implements Listener {
 				        }.runTaskAsynchronously((Plugin)this);
 				        Util.sendCMsg("Loading the RediSK syntax...");
 				        try {
-							sk.loadClasses("me.wheezygold.skLib", "skriptredis");
+							sk.loadClasses("me.wheezygold.skLib", "redis");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
