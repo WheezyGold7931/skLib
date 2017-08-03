@@ -12,11 +12,12 @@
  *  javax.annotation.Nullable
  *  org.bukkit.event.Event
  */
-package me.wheezygold.skLib.skript.redis;
+package me.wheezygold.skLib.skriptredis;
 
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
@@ -26,6 +27,12 @@ import org.bukkit.event.Event;
 
 public class ExprMsg
 extends SimpleExpression<String> {
+	
+	static {
+		 Skript.registerExpression(ExprMsg.class, String.class, 
+				 (ExpressionType)ExpressionType.SIMPLE, (String[])new String[]{"redis message"});
+	}
+	
     public Class<? extends String> getReturnType() {
         return String.class;
     }

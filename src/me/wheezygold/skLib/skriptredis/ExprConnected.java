@@ -10,9 +10,11 @@
  *  javax.annotation.Nullable
  *  org.bukkit.event.Event
  */
-package me.wheezygold.skLib.skript.redis;
+package me.wheezygold.skLib.skriptredis;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
@@ -23,6 +25,12 @@ import org.bukkit.event.Event;
 
 public class ExprConnected
 extends SimpleExpression<Boolean> {
+	
+	static {
+		Skript.registerExpression(ExprConnected.class, Boolean.class, 
+				(ExpressionType)ExpressionType.SIMPLE, (String[])new String[]{"redis connected"});
+	}
+	
     public Class<? extends Boolean> getReturnType() {
         return Boolean.class;
     }

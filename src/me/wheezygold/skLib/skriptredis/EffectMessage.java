@@ -10,8 +10,9 @@
  *  javax.annotation.Nullable
  *  org.bukkit.event.Event
  */
-package me.wheezygold.skLib.skript.redis;
+package me.wheezygold.skLib.skriptredis;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -23,6 +24,12 @@ import org.bukkit.event.Event;
 
 public class EffectMessage
 extends Effect {
+	
+	static {
+		Skript.registerEffect(EffectMessage.class, (String[])new String[]{
+				"send redis message %string% over channel %string%"});
+	}
+	
     private Expression<String> message;
     private Expression<String> channel;
 

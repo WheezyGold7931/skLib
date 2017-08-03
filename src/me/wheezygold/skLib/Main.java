@@ -16,10 +16,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
-import me.wheezygold.metrics.Metrics;
 import me.wheezygold.skLib.common.RedisConfig;
 import me.wheezygold.skLib.common.Util;
-import me.wheezygold.skLib.common.redis.Subscriber;
+import me.wheezygold.skLib.skriptredis.Subscriber;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -103,7 +102,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.8.4)") || Bukkit.getVersion().contains("(MC: 1.8.5)") || Bukkit.getVersion().contains("(MC: 1.8.6)") || Bukkit.getVersion().contains("(MC: 1.8.7)") || Bukkit.getVersion().contains("(MC: 1.8.8)")) {
 					Util.sendCMsg("Sliding into the 1.8.4 - 1.8.8's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_8");
+						sk.loadClasses("me.wheezygold.skLib", "skriptV1_8");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -111,7 +110,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.9)") || Bukkit.getVersion().contains("(MC: 1.9.1)") || Bukkit.getVersion().contains("(MC: 1.9.2)") || Bukkit.getVersion().contains("(MC: 1.9.3)")) {
 					Util.sendCMsg("Sliding into the 1.9 - 1.9.3's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_9");
+						sk.loadClasses("me.wheezygold.skLib", "skriptV1_9");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -119,7 +118,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.9.4)")) {
 					Util.sendCMsg("Sliding into the 1.9.4's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_9_4");
+						sk.loadClasses("me.wheezygold.skLib", "skriptV1_9_4");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -127,7 +126,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (Bukkit.getVersion().contains("(MC: 1.10)") || Bukkit.getVersion().contains("(MC: 1.10.1)") || Bukkit.getVersion().contains("(MC: 1.10.2)")) {
 					 Util.sendCMsg("Sliding into the 1.10 - 1.10.2's dms...");
 						try {
-							sk.loadClasses("me.wheezygold.skLib.skript", "V1_10");
+							sk.loadClasses("me.wheezygold.skLib", "skriptV1_10");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -135,7 +134,7 @@ public class Main extends JavaPlugin implements Listener {
 				 if (Bukkit.getVersion().contains("MC: 1.11")) {
 					 Util.sendCMsg("Sliding into the 1.11's dms...");
 					try {
-						sk.loadClasses("me.wheezygold.skLib.skript", "V1_11");
+						sk.loadClasses("me.wheezygold.skLib", "skriptV1_11");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -143,10 +142,20 @@ public class Main extends JavaPlugin implements Listener {
 				 if (Bukkit.getVersion().contains("MC: 1.12")) {
 					 Util.sendCMsg("Sliding into the 1.12's dms...");
 						try {
-							sk.loadClasses("me.wheezygold.skLib.skript", "V1_12");
+							sk.loadClasses("me.wheezygold.skLib", "skriptV1_12");
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+				 }
+				 if (getServer().getPluginManager().getPlugin("ServerListPlus")!=null) {
+					 Util.sendCMsg("Sliding into ServerListPlus's dms...");
+					 try {
+						sk.loadClasses("me.wheezygold.skLib", "skriptListPlus");
+						Util.sendCMsg("Loaded the ServerListPlus syntax!");
+					} catch (IOException e) {
+						Util.sendCMsg("We were unable to load ServerListPlus's syntax. Stack Trace:");
+						e.printStackTrace();
+					}
 				 }
 				 if (getServer().getPluginManager().getPlugin("RediSK")!=null) {
 						Util.sendCMsg("You already have RediSK installed so we are not going to load the RediSK syntax or stuff.");
@@ -185,7 +194,11 @@ public class Main extends JavaPlugin implements Listener {
 				            }
 				        }.runTaskAsynchronously((Plugin)this);
 				        Util.sendCMsg("Loading the RediSK syntax...");
-				        new me.wheezygold.skLib.common.redis.RegisterSkript(this);
+				        try {
+							sk.loadClasses("me.wheezygold.skLib", "skriptredis");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 				        Util.sendCMsg("Loaded the RediSK Syntax!");
 				        Util.sendCMsg("Finished loading the RediSK stuff, ily MFN <3.");
 					}

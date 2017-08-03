@@ -1,4 +1,4 @@
-package me.wheezygold.skLib.skript.V1_8;
+package me.wheezygold.skLib.skriptv1_9;
 
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import net.minecraft.server.v1_8_R3.Chunk;
+import net.minecraft.server.v1_9_R1.Chunk;
 
 public class EffRelightChunk extends Effect {
 	

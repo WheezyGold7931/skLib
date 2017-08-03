@@ -13,8 +13,9 @@
  *  org.bukkit.scheduler.BukkitRunnable
  *  org.bukkit.scheduler.BukkitTask
  */
-package me.wheezygold.skLib.skript.redis;
+package me.wheezygold.skLib.skriptredis;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -28,6 +29,12 @@ import redis.clients.jedis.Jedis;
 
 public class EffectFlush
 extends Effect {
+	
+	static {
+		Skript.registerEffect(EffectFlush.class, (String[])new String[]{
+				"flush all redis variables"});
+	}
+	
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         return true;
     }

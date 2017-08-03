@@ -1,4 +1,4 @@
-package me.wheezygold.metrics;
+package me.wheezygold.skLib;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;

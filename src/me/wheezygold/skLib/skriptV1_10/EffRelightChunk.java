@@ -1,4 +1,4 @@
-package me.wheezygold.skLib.skript.V1_10;
+package me.wheezygold.skLib.skriptV1_10;
 
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;

@@ -1,4 +1,4 @@
-package me.wheezygold.skLib.skript.V1_8;
+package me.wheezygold.skLib.skriptV1_8;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

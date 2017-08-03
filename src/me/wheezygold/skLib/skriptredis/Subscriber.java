@@ -9,13 +9,12 @@
  *  org.bukkit.scheduler.BukkitRunnable
  *  org.bukkit.scheduler.BukkitTask
  */
-package me.wheezygold.skLib.common.redis;
+package me.wheezygold.skLib.skriptredis;
 
 import org.bukkit.event.Event;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.wheezygold.skLib.Main;
-import me.wheezygold.skLib.skript.redis.RedisReceiveEvent;
 import redis.clients.jedis.JedisPubSub;
 
 public class Subscriber

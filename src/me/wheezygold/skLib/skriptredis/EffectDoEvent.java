@@ -11,8 +11,9 @@
  *  org.bukkit.Bukkit
  *  org.bukkit.event.Event
  */
-package me.wheezygold.skLib.skript.redis;
+package me.wheezygold.skLib.skriptredis;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -23,6 +24,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 public class EffectDoEvent	extends Effect {
+	
+	static {
+		Skript.registerEffect(EffectDoEvent.class, (String[])new String[]{"do local redis event with message %string% over channel %string%"});
+	}
+	
     private Expression<String> message;
     private Expression<String> channel;
 
