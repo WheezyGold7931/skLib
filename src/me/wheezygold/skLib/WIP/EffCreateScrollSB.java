@@ -32,14 +32,17 @@ public class EffCreateScrollSB extends Effect {
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		// TODO Auto-generated method stub
-		return null;
+		return "create a magic scoreboard titled " + title.getSingle(arg0) + " for " + player.getSingle(arg0);
 	}
 
 	@Override
 	protected void execute(Event evt) {
-		Player p = player.getSingle(evt);
-		SbManager.createscrollsb(p, title.getSingle(evt));
+		if(title.getSingle(evt) != null && player.getSingle(evt) != null) {
+			Player p = player.getSingle(evt);
+			SbManager.createscrollsb(p, title.getSingle(evt));
+		}else{
+			Skript.error("May not provide null for either of the required arguments, refer to the syntax.");
+		}
 	}
 
 }
