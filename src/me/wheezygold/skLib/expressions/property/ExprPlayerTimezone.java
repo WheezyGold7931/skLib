@@ -11,9 +11,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class ExprPlayerTimezone extends SimplePropertyExpression<Object, String> {
+public class ExprPlayerTimezone extends SimplePropertyExpression<Player, String> {
 	static {
-		PropertyExpression.register(ExprPlayerTimezone.class, String.class, "timezone", "player");
+		PropertyExpression.register(ExprPlayerTimezone.class, String.class, "timezone", "players");
 	}
 	@Override
 	protected String getPropertyName() {
@@ -21,21 +21,17 @@ public class ExprPlayerTimezone extends SimplePropertyExpression<Object, String>
 	}
 
 	@Override
-	public String convert(Object o) {
-		if(o instanceof Player){
-			InetAddress rawip = ((Player) o).getAddress().getAddress();
-			String ip = rawip.toString().replaceAll("/", "");
-			JSONObject jsonparsed = null;
-			try {
-				jsonparsed = JsonReader.readJsonFromUrl("http://freegeoip.net/json/" + ip);
-			} catch (JSONException | IOException e) {
-				e.printStackTrace();
-			}
-			String jsonvalue = (String) jsonparsed.get("time_zone");
-			return jsonvalue;
+	public String convert(Player o) {
+		InetAddress rawIp = o.getAddress().getAddress();
+		String ip = rawIp.toString().replaceAll("/", "");
+		JSONObject jsonParsed = null;
+		try {
+			jsonParsed = JsonReader.readJsonFromUrl("http://freegeoip.net/json/" + ip);
+		} catch (JSONException | IOException e) {
+			e.printStackTrace();
 		}
-		Skript.error("Incorrect provided argument, expected %player%");
-		return null;
+		String jsonValue = (String) jsonParsed.get("time_zone");
+		return jsonvalue;
 	}
 
 	@Override
