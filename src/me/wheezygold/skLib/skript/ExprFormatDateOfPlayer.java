@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Object, String>{
+public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Player, String>{
 	static {
 		PropertyExpression.register(ExprFormatDateOfPlayer.class, String.class, "formatted date", "player");
 	}
