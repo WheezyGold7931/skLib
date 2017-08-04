@@ -1,3 +1,55 @@
+
+Save New Duplicate & Edit Just Text Twitter
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
 package me.wheezygold.skLib.skript;
 
 import ch.njol.skript.Skript;
@@ -18,7 +70,7 @@ import java.util.TimeZone;
 
 public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Player, String>{
 	static {
-		PropertyExpression.register(ExprFormatDateOfPlayer.class, String.class, "formatted date", "player");
+		PropertyExpression.register(ExprFormatDateOfPlayer.class, String.class, "formatted date", "players");
 	}
 	@Override
 	protected String getPropertyName() {
@@ -26,24 +78,20 @@ public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Player, Str
 	}
 
 	@Override
-	public String convert(Object o) {
-		if(o instanceof Player){
-			InetAddress rawip = ((Player) o).getAddress().getAddress();
-			String ip = rawip.toString().replaceAll("/", "");
-			JSONObject jsonparsed = null;
-			try {
-				jsonparsed = JsonReader.readJsonFromUrl("http://freegeoip.net/json/" + ip);
-			} catch (JSONException | IOException e) {
-				e.printStackTrace();
-			}
-			String jsonvalue = (String) jsonparsed.get("time_zone");
-			Date date = new Date();
-			DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-			df.setTimeZone(TimeZone.getTimeZone(jsonvalue));
-			return df.format(date);
+	public String convert(Player o) {
+		InetAddress rawIp = o.getAddress().getAddress();
+		String ip = rawIp.toString().replaceAll("/", "");
+		JSONObject jsonParsed = null;
+		try {
+			jsonParsed = JsonReader.readJsonFromUrl("http://freegeoip.net/json/" + ip);
+		} catch (JSONException | IOException e) {
+			e.printStackTrace();
 		}
-		Skript.error("Incorrect provided argument, expected %player%");
-		return null;
+		String jsonValue = (String) jsonParsed.get("time_zone");
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		df.setTimeZone(TimeZone.getTimeZone(jsonvalue));
+		return df.format(date);
 	}
 
 	@Override
