@@ -16,9 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Object, String>{
+public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Player, String>{
 	static {
-		PropertyExpression.register(ExprFormatDateOfPlayer.class, String.class, "formatted date", "player");
+		PropertyExpression.register(ExprFormatDateOfPlayer.class, String.class, "formatted date", "players");
 	}
 	@Override
 	protected String getPropertyName() {
@@ -26,24 +26,20 @@ public class ExprFormatDateOfPlayer extends SimplePropertyExpression<Object, Str
 	}
 
 	@Override
-	public String convert(Object o) {
-		if(o instanceof Player){
-			InetAddress rawip = ((Player) o).getAddress().getAddress();
-			String ip = rawip.toString().replaceAll("/", "");
-			JSONObject jsonparsed = null;
-			try {
-				jsonparsed = JsonReader.readJsonFromUrl("http://freegeoip.net/json/" + ip);
-			} catch (JSONException | IOException e) {
-				e.printStackTrace();
-			}
-			String jsonvalue = (String) jsonparsed.get("time_zone");
-			Date date = new Date();
-			DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-			df.setTimeZone(TimeZone.getTimeZone(jsonvalue));
-			return df.format(date);
+	public String convert(Player o) {
+		InetAddress rawIp = o.getAddress().getAddress();
+		String ip = rawIp.toString().replaceAll("/", "");
+		JSONObject jsonParsed = null;
+		try {
+			jsonParsed = JsonReader.readJsonFromUrl("http://freegeoip.net/json/" + ip);
+		} catch (JSONException | IOException e) {
+			e.printStackTrace();
 		}
-		Skript.error("Incorrect provided argument, expected %player%");
-		return null;
+		String jsonValue = (String) jsonParsed.get("time_zone");
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		df.setTimeZone(TimeZone.getTimeZone(jsonvalue));
+		return df.format(date);
 	}
 
 	@Override
