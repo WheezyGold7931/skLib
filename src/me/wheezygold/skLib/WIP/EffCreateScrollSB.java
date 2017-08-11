@@ -11,7 +11,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import me.wheezygold.skLib.scoreboard.SbManager;
 
-@SuppressWarnings("unused")
 public class EffCreateScrollSB extends Effect {
 	
 	static {
