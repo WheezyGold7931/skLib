@@ -35,13 +35,18 @@ public class EffSetScoreSB extends Effect {
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
 		// TODO Auto-generated method stub
-		return null;
+		return "set score at " + slot.getSingle(arg0) + " of " + player.getSingle(arg0) + " score board to " + value.getSingle(arg0);
 	}
 
 	@Override
 	protected void execute(Event evt) {
-		int slotnum = Integer.valueOf(slot.toString());
-		SbManager.setscoresb(player.getSingle(evt), slotnum, value.getSingle(evt));
+		if((slot.getSingle(evt) == null) || (player.getSingle(evt) == null) || (value.getSingle(evt) == null)){
+			 			Skript.error("Must provide all values, refer to syntax.");
+			 			
+			 		}else{
+			 			int slotnum = Integer.valueOf(slot.toString());
+			 			SbManager.setscoresb(player.getSingle(evt), slotnum, value.getSingle(evt));
+			 		}
 		
 	}
 
