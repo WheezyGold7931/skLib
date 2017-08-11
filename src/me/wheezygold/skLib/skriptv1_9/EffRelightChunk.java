@@ -23,7 +23,7 @@ public class EffRelightChunk extends Effect {
 	@Override
 	public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
 		cnk = (Expression<Chunk>) arg0[0];
-		return false;
+		return true;
 	}
 
 	@Override
