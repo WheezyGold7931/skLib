@@ -33,14 +33,14 @@ public class CondVpnCheck extends Condition {
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "%string% is a vpn";
+		return ip.getSingle(arg0) + " is a vpn";
 	}
 
 	@Override
 	public boolean check(Event arg0) {
 		@SuppressWarnings("unused")
 		Boolean goodip = IpTools.validIP(ip.getSingle(arg0));
-		if (goodip = false) {
+		if (!goodip) {
 			Skript.error("\"" + ip + "\" is not a valid IPv4 address!");
 			return false;
 		}
