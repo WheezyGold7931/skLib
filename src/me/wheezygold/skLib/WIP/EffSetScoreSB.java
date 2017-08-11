@@ -40,7 +40,7 @@ public class EffSetScoreSB extends Effect {
 
 	@Override
 	protected void execute(Event evt) {
-		if((slot.getSingle() == null) || (player.getSingle(evt) == null) || (value.getSingle(evt) == null)){
+		if((slot.getSingle(evt) == null) || (player.getSingle(evt) == null) || (value.getSingle(evt) == null)){
 			Skript.error("Must provide all values, refer to syntax.");
 			
 		}else{
