@@ -40,14 +40,16 @@ public class Main extends JavaPlugin implements Listener {
 	
 	public void loadConfiguration() {
 		String _kickpath = "values.pastebin.apikey";
+		String _redispath = "toggles.redis";
 		getConfig().addDefault(_kickpath, "api-key-here");
+		getConfig().addDefault(_redispath, false);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}
 	
 	private static Main instance;
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes" })
 	@Override
 	public void onEnable() {
 		Util.sendCMsg("Creating Instance...");
@@ -147,24 +149,21 @@ public class Main extends JavaPlugin implements Listener {
 							e.printStackTrace();
 						}
 				 }
-				 if (getServer().getPluginManager().getPlugin("ServerListPlus")!=null) {
-					 Util.sendCMsg("Sliding into ServerListPlus's dms...");
-					 try {
-						sk.loadClasses("me.wheezygold.skLib", "skriptListPlus");
-						Util.sendCMsg("Loaded the ServerListPlus syntax!");
-					} catch (IOException e) {
-						Util.sendCMsg("We were unable to load ServerListPlus's syntax. Stack Trace:");
-						e.printStackTrace();
-					}
-				 }
+				Boolean redisb = this.getConfig().getBoolean("toggles.redis"); 
 				 if (getServer().getPluginManager().getPlugin("RediSK")!=null) {
 						Util.sendCMsg("You already have RediSK installed so we are not going to load the RediSK syntax or stuff.");
+					} 
+				 	if (!redisb) {
+						Util.sendCMsg("Redis syntax is toggled off! Enable it the config.yml ");
 					} else {
 						Util.sendCMsg("You do not have RediSK so let's will load the syntax now!");
 						Util.sendCMsg("Loading the RediSK stuff now...");
 						ip = RedisConfig.getConfig().getString("redis-ip");
 				        port = RedisConfig.getConfig().getInt("redis-port");
 				        String password = RedisConfig.getConfig().getString("redis-password");
+				        if (password.equals("password-here")) { //Let's not use a default password as a valid one
+				        	password = "";
+				        }
 				        List chnls = RedisConfig.getConfig().getList("channels");
 				        this.getLogger().info("Listening for channels:");
 				        channels = new String[chnls.size()];
